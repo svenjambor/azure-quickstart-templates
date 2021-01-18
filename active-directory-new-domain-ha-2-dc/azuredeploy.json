@@ -26,6 +26,48 @@
                 "description": "The DNS prefix for the public IP address used by the Load Balancer"
             }
         },
+        "virtualNetworkName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Administrator of the new VM and Domain"
+            },
+            "defaultValue": "adVnet"
+        },
+        "virtualNetworkAddressRange": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Administrator of the new VM and Domain"
+            },
+            "defaultValue": "10.0.0.0/16"
+        },
+        "adSubnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Administrator of the new VM and Domain"
+            },
+            "defaultValue": "adSubnet"
+        },
+        "adSubnet": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Administrator of the new VM and Domain"
+            },
+            "defaultValue": "10.0.0.0/24"
+        },
+        "adPDCNicIPAddress": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Administrator of the new VM and Domain"
+            },
+            "defaultValue": "10.0.0.4"
+        },
+        "adBDCNicIPAddress": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Administrator of the new VM and Domain"
+            },
+            "defaultValue": "10.0.0.5"
+        },
         "pdcRDPPort": {
             "type": "int",
             "metadata": {
@@ -82,14 +124,14 @@
         "adLBBE": "LBBE",
         "adPDCRDPNAT": "adPDCRDP",
         "adBDCRDPNAT": "adBDCRDP",
-        "virtualNetworkName": "adVNET",
-        "virtualNetworkAddressRange": "10.0.0.0/16",
-        "adSubnetName": "adSubnet",
-        "adSubnet": "10.0.0.0/24",
+        "virtualNetworkName": "[parameters('virtualNetworkName')]",
+        "virtualNetworkAddressRange": "[parameters('virtualNetworkAddressRange')]",
+        "adSubnetName": "[parameters('adSubnetName')]",
+        "adSubnet": "[parameters('adSubnet')]",
         "adPDCNicName": "adPDCNic",
-        "adPDCNicIPAddress": "10.0.0.4",
+        "adPDCNicIPAddress": "[parameters('adPDCNicIPAddress')]",
         "adBDCNicName": "adBDCNic",
-        "adBDCNicIPAddress": "10.0.0.5",
+        "adBDCNicIPAddress": "[parameters('adBDCNicIPAddress')]",
         "adSubnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]",
         "adLBName": "adLoadBalancer",
         "adlbFEConfigID": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('adLBName'), variables('adLBFE'))]",
